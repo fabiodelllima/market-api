@@ -7,3 +7,7 @@ const runningMsg: string = `Server running on http://localhost:${PORT}`;
 
 app.use(express.json());
 app.use('/products', productRouter);
+
+app.listen(PORT, () => {
+  console.log(runningMsg);
+});
