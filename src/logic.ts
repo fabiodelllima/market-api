@@ -46,3 +46,14 @@ export const updateProduct = (req: Request, res: Response) => {
   return res.status(200).json();
 };
 
+export const deleteProduct = (req: Request, res: Response) => {
+  const index = market.findIndex((product) => {
+    return product.id === Number(req.params.userId);
+  });
+
+  market.splice(index, 1);
+
+  res
+    .status(200)
+    .json({ message: 'Product succesfully deleted' });
+};
