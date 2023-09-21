@@ -14,3 +14,14 @@ export const createProduct = (req: Request, res: Response) => {
   });
 };
 
+export const readProduct = (req: Request, res: Response) => {
+  return res.status(200).json(market);
+};
+
+export const readOneProduct = (req: Request, res: Response) => {
+  const product = market.find((product) => {
+    return product.id === Number(req.params.userId);
+  });
+
+  return res.status(200).json(product);
+};
