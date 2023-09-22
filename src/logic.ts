@@ -69,7 +69,7 @@ export const updatePartialProduct = (
 
 export const deleteProduct = (req: Request, res: Response) => {
   const index = market.findIndex((product) => {
-    return product.id === Number(req.params.userId);
+    return product.id === +req.params.id;
   });
 
   market.splice(index, 1);
