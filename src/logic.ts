@@ -56,20 +56,28 @@ export const updatePartialProduct = (
     (product) => product.id === +req.params.id
   );
 
-  const newProduct = { ...product, ...req.body };
+  const productBody: Partial<IProduct> = {
+    id: Number(req.params.id),
+    name: String(req.body.name),
+    price: Number(req.body.price),
+    weight: Number(req.body.weight),
+    section: String(req.body.section),
+    calories: Number(req.body.calories),
+    // expirationDate: Date(),
+  };
+
+  const newProduct = { ...product, ...productBody };
 
   const index = market.findIndex(
     (product) => product.id === +req.params.id
   );
 
-  market.splice(index, 1, newProduct);
+  market.splice(index, 1, newProduct as IProduct);
 
-  return res
-    .status(200)
-    .json({
-      message: 'Product updated succesfully',
-      product: newProduct,
-    });
+  return res.status(200).json({
+    message: 'Product updated succesfully',
+    product: newProduct,
+  });
 };
 
 export const deleteProduct = (req: Request, res: Response) => {
