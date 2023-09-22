@@ -14,3 +14,4 @@ productRouter.post('/', createProductValidation, createProduct);
 productRouter.get('/', readProduct);
 productRouter.get('/:id', readOneProduct);
 productRouter.put('/:id', updateProduct);
+productRouter.patch('/:id');
