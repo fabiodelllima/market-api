@@ -20,7 +20,7 @@ export const readProduct = (req: Request, res: Response) => {
 
 export const readOneProduct = (req: Request, res: Response) => {
   const product = market.find((product) => {
-    return product.id === Number(req.params.userId);
+    return product.id === +req.params.id;
   });
 
   return res.status(200).json(product);
@@ -28,7 +28,7 @@ export const readOneProduct = (req: Request, res: Response) => {
 
 export const updateProduct = (req: Request, res: Response) => {
   const index = market.findIndex((product) => {
-    return product.id === Number(req.params.productId);
+    return product.id === +req.params.id;
   });
 
   const newProduct = {
