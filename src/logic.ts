@@ -43,6 +43,11 @@ export const updateProduct = (req: Request, res: Response) => {
 
   market.splice(index, 1, newProduct);
 
+  return res
+    .status(200)
+    .json({ message: 'Product succesfully updated' });
+};
+
 export const updatePartialProduct = (
   req: Request,
   res: Response
