@@ -32,7 +32,7 @@ export const updateProduct = (req: Request, res: Response) => {
   });
 
   const newProduct = {
-    id: Number(req.params.productId),
+    id: Number(req.params.id),
     name: String(req.body.name),
     price: Number(req.body.price),
     weight: Number(req.body.weight),

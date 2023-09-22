@@ -12,6 +12,5 @@ export const productRouter = Router();
 
 productRouter.post('/', createProductValidation, createProduct);
 productRouter.get('/', readProduct);
-productRouter.get('/:productId', readOneProduct);
-productRouter.put('/:productId', updateProduct);
-productRouter.delete('/:productId', deleteProduct);
+productRouter.get('/:id', readOneProduct);
+productRouter.put('/:id', updateProduct);
