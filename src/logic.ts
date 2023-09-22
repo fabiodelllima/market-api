@@ -43,7 +43,28 @@ export const updateProduct = (req: Request, res: Response) => {
 
   market.splice(index, 1, newProduct);
 
-  return res.status(200).json();
+export const updatePartialProduct = (
+  req: Request,
+  res: Response
+) => {
+  const product = market.find(
+    (product) => product.id === +req.params.id
+  );
+
+  const newProduct = { ...product, ...req.body };
+
+  const index = market.findIndex(
+    (product) => product.id === +req.params.id
+  );
+
+  market.splice(index, 1, newProduct);
+
+  return res
+    .status(200)
+    .json({
+      message: 'Product updated succesfully',
+      product: newProduct,
+    });
 };
 
 export const deleteProduct = (req: Request, res: Response) => {
