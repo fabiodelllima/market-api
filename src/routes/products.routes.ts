@@ -1,5 +1,7 @@
 import { Router } from 'express';
 import { createProductValidation } from '../middlewares/createProductValidation';
+import { checkProductIdExists } from '../middlewares/checkProductIdExists';
+import { checkProductNameExists } from '../middlewares/checkProductNameExists';
 import {
   createProduct,
   deleteProduct,
@@ -7,8 +9,6 @@ import {
   readProduct,
   updateProduct,
 } from '../logic';
-import { checkProductIdExists } from '../middlewares/checkProductIdExists';
-import { checkProductNameExists } from '../middlewares/checkProductNameExists';
 
 export const productRouter = Router();
 
