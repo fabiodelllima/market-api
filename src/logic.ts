@@ -34,10 +34,10 @@ export const updateProduct = (req: Request, res: Response) => {
   const newProduct = {
     id: Number(req.params.productId),
     name: String(req.body.name),
-    price: Number(req.params.price),
-    weight: Number(req.params.weight),
-    section: String(req.params.section),
-    calories: Number(req.params.calories),
+    price: Number(req.body.price),
+    weight: Number(req.body.weight),
+    section: String(req.body.section),
+    calories: Number(req.body.calories),
     // expirationDate: Date(),
   };
 
