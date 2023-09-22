@@ -7,6 +7,7 @@ import {
   readProduct,
   updateProduct,
 } from '../logic';
+import { checkProductIdExists } from '../middlewares/checkProductIdExists';
 import { checkProductNameExists } from '../middlewares/checkProductNameExists';
 
 export const productRouter = Router();
@@ -22,3 +23,9 @@ productRouter.get('/', readProduct);
 productRouter.get('/:id', readOneProduct);
 productRouter.put('/:id', updateProduct);
 productRouter.patch('/:id');
+
+productRouter.delete(
+  '/:id',
+  checkProductIdExists,
+  deleteProduct
+);
