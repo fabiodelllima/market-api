@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-import { v4 as uuidv4 } from 'uuid';
 import { market } from './database';
 import { IProduct } from './interfaces';
 
@@ -46,7 +45,6 @@ export const readProduct = (req: Request, res: Response) => {
     products,
   });
 };
-
 export const readOneProduct = (req: Request, res: Response) => {
   const id = Number(req.params.id);
 
@@ -55,28 +53,6 @@ export const readOneProduct = (req: Request, res: Response) => {
   });
 
   return res.status(200).json(product);
-};
-
-export const updateProduct = (req: Request, res: Response) => {
-  const index = market.findIndex((product) => {
-    return product.id === +req.params.id;
-  });
-
-  const newProduct = {
-    id: Number(req.params.id),
-    name: String(req.body.name),
-    price: Number(req.body.price),
-    weight: Number(req.body.weight),
-    section: String(req.body.section),
-    calories: Number(req.body.calories),
-    // expirationDate: Date(),
-  };
-
-  market.splice(index, 1, newProduct);
-
-  return res
-    .status(200)
-    .json({ message: 'Product succesfully updated' });
 };
 
 export const updatePartialProduct = (
