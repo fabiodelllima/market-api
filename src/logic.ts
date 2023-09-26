@@ -6,15 +6,23 @@ import { IProduct } from './interfaces';
 let id = 1;
 
 export const createProduct = (req: Request, res: Response) => {
-  const newProduct: IProduct = { id: uuidv4(), ...req.body };
+  const date = new Date();
+  date.setDate(date.getDate() + 365);
+
+  const newProduct: IProduct = {
+    id,
+    name: req.body.name,
+    price: req.body.price,
+    weight: req.body.weight,
+    section: req.body.section,
+    calories: req.body.calories,
+    expirationDate: date,
+  };
 
   market.push(newProduct);
   id++;
 
-  return res.status(201).json({
-    message: 'Product succesfully created',
-    product: newProduct,
-  });
+  return res.status(201).json(newProduct);
 };
 
 export const readProduct = (req: Request, res: Response) => {
