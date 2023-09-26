@@ -48,8 +48,10 @@ export const readProduct = (req: Request, res: Response) => {
 };
 
 export const readOneProduct = (req: Request, res: Response) => {
+  const id = Number(req.params.id);
+
   const product = market.find((product) => {
-    return product.id === +req.params.id;
+    return product.id === id;
   });
 
   return res.status(200).json(product);
