@@ -26,7 +26,25 @@ export const createProduct = (req: Request, res: Response) => {
 };
 
 export const readProduct = (req: Request, res: Response) => {
-  return res.status(200).json(market);
+  const total = market.reduce(
+    (acc, product) => acc + product.price,
+    0
+  );
+
+  const products = market.map((product) => ({
+    id: product.id,
+    name: product.name,
+    price: product.price,
+    weight: product.weight,
+    calories: product.calories,
+    section: product.section,
+    expirationDate: product.expirationDate,
+  }));
+
+  return res.status(200).json({
+    total,
+    products,
+  });
 };
 
 export const readOneProduct = (req: Request, res: Response) => {
