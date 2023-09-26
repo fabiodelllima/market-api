@@ -7,7 +7,7 @@ import {
   deleteProduct,
   readOneProduct,
   readProduct,
-  updateProduct,
+  updatePartialProduct,
 } from '../logic';
 
 export const productRouter = Router();
