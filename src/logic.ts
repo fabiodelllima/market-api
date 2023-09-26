@@ -120,13 +120,13 @@ export const updatePartialProduct = (
 };
 
 export const deleteProduct = (req: Request, res: Response) => {
+  const id = Number(req.params.id);
+
   const index = market.findIndex((product) => {
-    return product.id === +req.params.id;
+    return product.id === id;
   });
 
   market.splice(index, 1);
 
-  res
-    .status(200)
-    .json({ message: 'Product succesfully deleted' });
+  res.status(204).json();
 };
