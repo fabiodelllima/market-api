@@ -47,10 +47,7 @@ export const readProduct = (req: Request, res: Response) => {
 };
 export const readOneProduct = (req: Request, res: Response) => {
   const id = Number(req.params.id);
-
-  const product = market.find((product) => {
-    return product.id === id;
-  });
+  const product = market.find((product) => product.id === id);
 
   return res.status(200).json(product);
 };
@@ -60,9 +57,7 @@ export const updatePartialProduct = (
   res: Response
 ) => {
   const id = Number(req.params.id);
-
   const product = market.find((product) => product.id === id);
-
   const productBody: Partial<IProduct> = {};
 
   Object.entries(req.body).forEach((entries) => {
@@ -71,12 +66,10 @@ export const updatePartialProduct = (
     if (key === 'name') {
       productBody[key] = value as string;
     }
-
     if (key === 'section') {
       productBody[key] =
         (value as 'food') || (value as 'cleaning');
     }
-
     if (
       key === 'price' ||
       key === 'weight' ||
@@ -87,7 +80,6 @@ export const updatePartialProduct = (
   });
 
   const newProduct = { ...product, ...productBody };
-
   const index = market.findIndex((product) => product.id === id);
 
   market.splice(index, 1, newProduct as IProduct);
@@ -97,10 +89,7 @@ export const updatePartialProduct = (
 
 export const deleteProduct = (req: Request, res: Response) => {
   const id = Number(req.params.id);
-
-  const index = market.findIndex((product) => {
-    return product.id === id;
-  });
+  const index = market.findIndex((product) => product.id === id);
 
   market.splice(index, 1);
 
