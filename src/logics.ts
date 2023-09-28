@@ -47,10 +47,7 @@ export const readProduct = (req: Request, res: Response) => {
 };
 export const readOneProduct = (req: Request, res: Response) => {
   const id = Number(req.params.id);
-
-  const product = market.find((product) => {
-    return product.id === id;
-  });
+  const product = market.find((product) => product.id === id);
 
   return res.status(200).json(product);
 };
@@ -97,10 +94,7 @@ export const updatePartialProduct = (
 
 export const deleteProduct = (req: Request, res: Response) => {
   const id = Number(req.params.id);
-
-  const index = market.findIndex((product) => {
-    return product.id === id;
-  });
+  const index = market.findIndex((product) => product.id === id);
 
   market.splice(index, 1);
 
