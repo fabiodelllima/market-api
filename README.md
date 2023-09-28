@@ -1,42 +1,7 @@
 # Mercado autônomo
-
-## Introdução
-
 Recebemos uma demanda para realizar a criação de uma API REST. Essa API será utilizada para organização do estoque de uma startup em processo de testes que pretende se transformar em uma rede de mercados autônomos (Smart Store). Hoje o mercado trabalha com apenas dois tipos de produtos: **comida** e **limpeza**.
 
-Como iremos controlar o estoque do mercado, nossa aplicação deverá ter rotas para a **_criação_**, **_listagem_**, **_atualização_** e **_deleção_** de produtos.
-
-Vamos colocar a mão <s>na massa</s> no código!
-
-#
-
-    O repositório da entrega conta com o arquivo chamado market_workspace. Esse arquivo é um documento de design utilizado no insomnia.
-    Ele contém todas as rotas necessárias para que a aplicação esteja de acordo com as regras impostas.
-    Esse arquivo também será utilizado por instrutores e monitores na correção das entregas.
-
-    O workspace em questão possui duas páginas:
-      Página para Debug:
-        - pode ser utilizado a vontade e ter seus valores para criação, listagem, atualização ou deleção, alterados sem problemas.
-
-      Página para Testes:
-        - NUNCA ALTERE NENHUM TESTE OU ROTA DA PÁGINA DE TESTES;
-        - ATENÇÃO: sempre REINICIE o servidor a cada novo teste ou bateria de testes, que for executar;
-
-#
-
-## Regras da entrega
-
-A entrega deve seguir as seguintes regras ou será zerada:
-
-- O código deve estar em TypeScript.
-- Não deve ser utilizada nenhuma outra tecnologia além das apresentadas e utilizadas nessa sprint.
-- A organização de arquivos deve seguir o que foi visto previamente (**_app.ts_**, **_interfaces.ts_**, **_logics.ts_**, **_database.ts_**, **_middlewares.ts_**).
-- Uma constante **market** deve ser criada em seu arquivo database.ts.
-  - Deverá ser um array vazio utilizado para simular o banco de dados.
-- Todas as **funções** e **atributos** devem ser nomeados **de acordo com o solicitado**.
-  - **_Caso não esteja de acordo com o estabelecido, será descontado nota._**
-
-#
+Como iremos controlar o estoque do mercado, nossa aplicação deverá ter rotas para a **_criação_**, **_listagem_**, **_atualização_** e **_exclusão_** de produtos.
 
 ## Interfaces da aplicação
 
@@ -77,8 +42,6 @@ Para a tipagem dos produtos deverá ser criada a seguinte interface:
   - Representa a **data de expiração** do produto;
   - O valor deverá ser de 365 dias a partir da data de criação do produto.
 
-#
-
 ## Endpoints da aplicação
 
 | Método | Endpoint      | Responsabilidade                                   |
@@ -88,8 +51,6 @@ Para a tipagem dos produtos deverá ser criada a seguinte interface:
 | GET    | /products/:id | Listar um produto específico através do seu id     |
 | PATCH  | /products/:id | Atualizar os dados de um produto através do seu id |
 | DELETE | /products/:id | Deletar o produto a partir do seu id               |
-
-#
 
 ## Middlewares da aplicação
 
@@ -131,8 +92,6 @@ Para a tipagem dos produtos deverá ser criada a seguinte interface:
   "message": "Product not found."
 }
 ```
-
-#
 
 ## Regras da aplicação
 
@@ -374,8 +333,3 @@ O exemplo abaixo foi realizado na seguinte rota: `/products/9999` informando um 
   "message": "Product not found."
 }
 ```
-
-## Importante!
-
-Não esqueça de adicionar **_team-m4-correcoes_** no seu repositório do github, para que seja possível realizarmos as correções.
-Também não se esqueça de enviar o link do repositório na submissão da entrega.
