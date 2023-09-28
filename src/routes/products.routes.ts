@@ -1,17 +1,32 @@
 import { Router } from 'express';
-import { createProductValidation } from '../middlewares/createProductValidation';
+import { isProductBodyValid } from '../middlewares/isProductBodyValid';
+import { isProductIdValid } from '../middlewares/isProductIdValid';
+import { isProductNameValid } from '../middlewares/isProductNameValid';
 import {
   createProduct,
   deleteProduct,
   readOneProduct,
   readProduct,
-  updateProduct,
+  updatePartialProduct,
 } from '../logic';
 
 export const productRouter = Router();
 
-productRouter.post('/', createProductValidation, createProduct);
 productRouter.get('/', readProduct);
-productRouter.get('/:productId', readOneProduct);
-productRouter.put('/:productId', updateProduct);
-productRouter.delete('/:productId', deleteProduct);
+productRouter.get('/:id', isProductIdValid, readOneProduct);
+
+productRouter.post(
+  '/',
+  isProductBodyValid,
+  isProductNameValid,
+  createProduct
+);
+
+productRouter.patch(
+  '/:id',
+  isProductNameValid,
+  isProductIdValid,
+  updatePartialProduct
+);
+
+productRouter.delete('/:id', isProductIdValid, deleteProduct);
